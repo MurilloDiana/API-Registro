@@ -48,5 +48,20 @@ class UserController extends Controller
         return response()->json(['message' => "Deleted"], Response::HTTP_OK);
     }
 
-
+    public function login(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+        
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            return response()->json(['user' => $user]);
+        } else {
+            return response()->json(['message' => 'Unauthorized'], Response::HTTP_OK);
+        }
+    }
+    
+   
 }
+
+
+
