@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+Route::get('/login', 'login');
 Route::controller(UserController::class)->group(function(){
     Route::get('/users', 'index');
     Route::post('/user', 'store');
